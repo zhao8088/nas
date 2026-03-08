@@ -1,7 +1,7 @@
 export default {
   async fetch(request) {
     const originalUrl = new URL(request.url);
-    const nasDomain = "m1.example.com"; // 只写域名，不带端口
+    const nasDomain = "nas.hyzx.top"; // 只写域名，不带端口
 
     // 动态构建回源URL，协议和端口都留空，让平台规则决定
     const nasUrl = `http://${nasDomain}${originalUrl.pathname}${originalUrl.search}`;
