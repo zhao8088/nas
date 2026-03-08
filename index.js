@@ -1,7 +1,7 @@
 export default {
   async fetch(request) {
     const originalUrl = new URL(request.url);
-    const nasDomain = "nas.hyzx.top"; // <--- 替换为你的真实M1域名
+    const nasDomain = "nas.hyzx.top:5000"; // <--- 替换为你的真实M1域名
     const nasUrl = `http://${nasDomain}${originalUrl.pathname}${originalUrl.search}`;
 
     const nasRequest = new Request(nasUrl, {
