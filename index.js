@@ -1,14 +1,18 @@
 export default {
   async fetch(request) {
     const originalUrl = new URL(request.url);
-    const nasDomain = "nas.hyzx.top"; // 只写域名，不带端口
+    const nasDomain = "nas.hyzx.top"; // 替换为实际M1域名
 
-    // 动态构建回源URL，协议和端口都留空，让平台规则决定
+    // 构建目标URL，使用http://，不指定端口
     const nasUrl = `http://${nasDomain}${originalUrl.pathname}${originalUrl.search}`;
 
+    // 关键：构造新请求，强制设置Host头
     const nasRequest = new Request(nasUrl, {
       method: request.method,
-      headers: request.headers,
+      headers: {
+        ...request.headers,
+        'Host': nasDomain,
+      },
       body: request.body,
     });
 
